@@ -58,10 +58,10 @@ module.exports.connections = {
   ***************************************************************************/
   Database: {
     adapter: 'sails-mongo',
-    host: 'localhost',
-    database: 'DevPoint'
-    //url: 'mongodb://heroku_xj56d1p2:4brn2l9u20k0o6b3qpsk81uu8b@ds017726.mlab.com:17726/heroku_xj56d1p2',
-    //schema: true
+    // host: 'localhost',
+    // database: 'DevPoint',
+    url: 'mongodb://heroku_xj56d1p2:4brn2l9u20k0o6b3qpsk81uu8b@ds017726.mlab.com:17726/heroku_xj56d1p2',
+    schema: true
   },
 
   /***************************************************************************
