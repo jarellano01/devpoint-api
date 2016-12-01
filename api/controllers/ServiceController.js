@@ -6,31 +6,17 @@
  */
 
 module.exports = {
+
   create: function (req, res) {
-    var b = req.body;
-
-    User.findOneByUsername(req.param('username')).exec(function(err, userData){
-      if(err){
-        return res.serverError(err);
-      }
-      if(!userData){
-        return res.notFound("User not found.")
-      }
-
+    var r = req.body;
+    User.findOne({username: req.params.username}).exec(function(err, user){
       Service.create({
-        name : b.name,
-
-        description : b.description,
-
-        userId: userData.id
+        name : r.name,
+        description : r.link,
+        userId: data.id
+      }).exec(function(err, data){
+        return res.redirect("/user/" + data.username)
       })
-        .exec(function(err, serviceData){
-          if(err){
-            return res.serverError(err);
-          }
-          return res.redirect("/user/byUsername?username=" + userData.username)
-        })
-
     })
   },
 
@@ -52,7 +38,6 @@ module.exports = {
     Service.update({
       id: req.param(id)
     })
-
   }
 
 

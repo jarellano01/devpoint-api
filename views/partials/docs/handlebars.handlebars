@@ -1,0 +1,19 @@
+<div id="handlebars" class="section-block">
+    <div class="code-block">
+        <h6>Handlebars Code Example</h6>
+        <pre><code class="language-handlebars">Handlebars.registerHelper('list', function(items, options) {
+  var out = &quot;&lt;ul&gt;&quot;;
+
+  for(var i=0, l=items.length; i&lt;l; i++) {
+    out = out + &quot;&lt;li&gt;&quot; + options.fn(items[i]) + &quot;&lt;/li&gt;&quot;;
+  }
+
+  return out + &quot;&lt;/ul&gt;&quot;;
+});</code></pre>
+    </div><!--//code-block-->
+    <div class="code-block">
+        <h6>Git Code Example</h6>
+        <pre><code class="language-git">$ git add Documentation.txt</code></pre>
+    </div><!--//code-block-->
+</div><!--//section-block-->
+

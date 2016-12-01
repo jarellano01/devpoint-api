@@ -20,19 +20,26 @@ module.exports = {
   // models: {
   //   connection: 'someMysqlServer'
   // },
+  connection: {
+    Database: {
+      adapter: 'sails-mongo',
+      url: 'mongodb://heroku_xj56d1p2:4brn2l9u20k0o6b3qpsk81uu8b@ds017726.mlab.com:17726/heroku_xj56d1p2',
+      schema: true
+    }
+  }
 
   /***************************************************************************
    * Set the port in the production environment to 80                        *
    ***************************************************************************/
 
-  // port: 80,
+// port: 80,
 
   /***************************************************************************
    * Set the log level in production environment to "silent"                 *
    ***************************************************************************/
 
-  // log: {
-  //   level: "silent"
-  // }
+// log: {
+//   level: "silent"
+// }
 
 };

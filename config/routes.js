@@ -36,9 +36,11 @@ module.exports.routes = {
   //   view: 'homepage'
   // }
 
-  'get /': 'HomeController.homepage',
-  'post /contact' : 'HomeController.contact',
-  'get /admin' : "AdminController.admin"
+  'get /user/:username': 'UserController.find',
+  'post /user/register' : 'UserController.register',
+
+  'post /service/create/:username' : 'ServiceController.create',
+  'post /link/create/:username' : 'ServiceController.create'
 
   /***************************************************************************
   *                                                                          *

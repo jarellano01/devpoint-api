@@ -15,6 +15,33 @@ module.exports = {
     })
   },
 
+  register: function (req, res) {
+    var r = req.body;
+    User.create({
+      username: r.username,
+      email: r.email,
+      firstName: r.firstName,
+      lastName: r.lastName,
+      password: r.password
+    })
+      .exec(function (err, data){
+        res.json(data);
+      })
+  },
+
+  find: function (req, res) {
+    User.findOne({
+      username: req.params.username
+    })
+      .populate("links")
+      .populate('messages')
+      .populate('skills')
+      .populate('services')
+      .exec(function (err, data) {
+      res.json(data);
+    });
+  },
+
   deleteAll: function (req, res) {
     User.destroy({}).exec(function (err, data) {
       if (err) {
@@ -97,7 +124,7 @@ module.exports = {
         description: b.description
       })
       .exec(function (err, data) {
-        if(err){
+        if (err) {
           return res.serverError(err);
         }
         return res.json(data);
