@@ -4,7 +4,7 @@
  * @description :: Server-side logic for managing Users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
-
+var axios = require('axios');
 module.exports = {
   /**
    * `UsersController.all()`
@@ -40,6 +40,17 @@ module.exports = {
       .exec(function (err, data) {
       res.json(data);
     });
+  },
+
+  axios: function (req, res){
+    axios.get('https://devpoint-api.herokuapp.com/user?username=jarellano')
+      .then(function (response) {
+        console.log(response.data);
+        res.json(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   },
 
   findItems: function(req, res){

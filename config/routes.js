@@ -35,8 +35,9 @@ module.exports.routes = {
   // '/': {
   //   view: 'homepage'
   // }
-
+  'get /user/all' : 'UserController.all',
   'get /user': 'UserController.find',
+
   'get /user/:id': 'UserController.find',
 
   'post /user/register' : 'UserController.register',
@@ -44,6 +45,8 @@ module.exports.routes = {
   'get /user/:username/:item' : 'UserController.findItems',
 
   'post /user/:username/:item' : 'UserController.createItem',
+
+  'get /axios': 'UserController.axios',
 
   // 'post /user/:username/service' : 'ServiceController.create',
   // 'post /user/:username/link' : 'LinkController.create',
