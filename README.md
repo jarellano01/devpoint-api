@@ -49,7 +49,8 @@ All Creating, Updating and Deleted should be done through an html form or throug
   * description
 
 **Add Item to User (ex. Service)** `Post /user/{username}/{item}`
-**Update Item (ex. Service)** `Put /user/{id}/{item}`
+
+**Update Item (ex. Service)** `Put /user/{item-id}/{item}`
 
 **Item Form Fields**
 * Item = link
