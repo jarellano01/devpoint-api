@@ -30,9 +30,8 @@ module.exports = {
   },
 
   find: function (req, res) {
-    User.findOne({
-      username: req.params.username
-    })
+    var params = req.allParams();
+    User.findOne(params)
       .populate("links")
       .populate('messages')
       .populate('skills')

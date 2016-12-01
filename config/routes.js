@@ -36,11 +36,22 @@ module.exports.routes = {
   //   view: 'homepage'
   // }
 
-  'get /user/:username': 'UserController.find',
+  'get /user': 'UserController.find',
+  'get /user/:id': 'UserController.find',
+
   'post /user/register' : 'UserController.register',
 
-  'post /service/create/:username' : 'ServiceController.create',
-  'post /link/create/:username' : 'ServiceController.create'
+  'get /user/:username/service' : 'ServiceController.find',
+  'get /user/:username/link' : 'LinkController.find',
+  'get /user/:username/skill' : 'SkillController.find',
+  'get /user/:username/message' : 'MessageController.find',
+
+  'post /user/:username/service' : 'ServiceController.create',
+  'post /user/:username/link' : 'LinkController.create',
+  'post /user/:username/skill' : 'SkillController.create',
+  'post /user/:username/message' : 'MessageController.create',
+
+  'put /service/:id': 'ServiceController.update'
 
   /***************************************************************************
   *                                                                          *
