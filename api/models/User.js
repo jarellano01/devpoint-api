@@ -27,6 +27,9 @@ module.exports = {
       unique: true,
       required: true
     },
+    profileImage: {
+      type: 'string'
+    },
 
     headline: {type: 'string'},
 

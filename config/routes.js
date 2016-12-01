@@ -37,6 +37,7 @@ module.exports.routes = {
   // }
   'get /user/all' : 'UserController.all',
   'get /user': 'UserController.find',
+  'put /user' : 'UserController.update',
 
   'get /user/:id': 'UserController.find',
 

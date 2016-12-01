@@ -30,6 +30,16 @@ module.exports = {
       })
   },
 
+  update: function(req, res){
+    var params = req.allParams();
+    var username = req.param('username');
+    delete params.username;
+    User.update({username: username}, params).exec(function(err, data){
+      if (err) { return res.serverError(err); }
+       res.redirect('/user?username=' + username)
+    })
+  },
+
   find: function (req, res) {
     var params = req.allParams();
     User.findOne(params)
@@ -130,38 +140,6 @@ module.exports = {
   //   })
   // },
 
-
-  /**
-   * `UsersController.update()`
-   */
-  update: function (req, res) {
-    var b = req.body;
-
-    User.update({
-        username: req.param("username")
-      },
-      {
-        firstName: b.firstName,
-
-        lastName: b.lastName,
-
-        email: b.email,
-
-        password: b.password,
-
-        username: b.username,
-
-        headline: b.headline,
-
-        description: b.description
-      })
-      .exec(function (err, data) {
-        if (err) {
-          return res.serverError(err);
-        }
-        return res.json(data);
-      })
-  },
 
 
   /**
