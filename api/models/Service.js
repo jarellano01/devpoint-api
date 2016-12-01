@@ -9,9 +9,9 @@ module.exports = {
 
   attributes: {
 
-    name : { type: 'string' },
+    name : { type: 'string', required: true },
 
-    description : { type: 'string' },
+    description : { type: 'string', required: true },
 
     userId: {
       model: 'user'

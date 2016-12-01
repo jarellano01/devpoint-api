@@ -25,6 +25,7 @@ module.exports = {
       password: r.password
     })
       .exec(function (err, data){
+        if (err) { return res.serverError(err); }
         res.json(data);
       })
   },
@@ -39,6 +40,27 @@ module.exports = {
       .exec(function (err, data) {
       res.json(data);
     });
+  },
+
+  findItems: function(req, res){
+    var r = req.params;
+    User.findOne({username: r.username}).populate(r.item).exec(function(err, data){
+      if (err) { return res.serverError(err); }
+      return res.json(data[r.item]);
+    })
+  },
+  createItem: function(req, res){
+    var r = req.params;
+    var params = req.allParams();
+    delete params.username;
+    delete params.item;
+    User.findOne({username: r.username}).populate(r.item).exec(function(err, data){
+      if (err) { return res.serverError(err); }
+      data[r.item].add(params);
+      data.save(function (err) {
+        res.redirect('/user/' + data.id)
+      });
+    })
   },
 
   deleteAll: function (req, res) {

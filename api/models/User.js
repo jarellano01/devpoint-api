@@ -10,11 +10,11 @@ module.exports = {
 
   attributes: {
 
-    firstName: {type: 'string'},
+    firstName: {type: 'string', required: true},
 
-    lastName: {type: 'string'},
+    lastName: {type: 'string', required: true},
 
-    email: {type: 'string'},
+    email: {type: 'string',required: true},
 
     password: {
       type: 'string',
@@ -24,7 +24,8 @@ module.exports = {
 
     username: {
       type: 'string',
-      unique: true
+      unique: true,
+      required: true
     },
 
     headline: {type: 'string'},
@@ -50,7 +51,6 @@ module.exports = {
       collection: 'skill',
       via: 'userId'
     }
-
   },
   beforeCreate: function (user, cb) {
     bcrypt.genSalt(10, function (err, salt) {
