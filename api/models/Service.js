@@ -16,7 +16,7 @@ module.exports = {
     icon : { type: 'string'},
 
     deleteLink: function(){
-      return sails.getBaseUrl() + "/service/delete/" + this.id;
+      return  "/service/delete/" + this.id;
     },
     userId: {
       model: 'user'
