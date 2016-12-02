@@ -15,9 +15,18 @@ module.exports = {
 
     icon : { type: 'string'},
 
+    deleteLink: function(){
+      return sails.getBaseUrl() + "/service/delete/" + this.id;
+    },
     userId: {
       model: 'user'
+    },
+    toJSON: function() {
+      var obj = this.toObject();
+      obj.deleteLink = this.deleteLink();
+      return obj;
     }
   }
+
 };
 

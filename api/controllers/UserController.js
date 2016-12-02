@@ -24,19 +24,23 @@ module.exports = {
       lastName: r.lastName,
       password: r.password
     })
-      .exec(function (err, data){
-        if (err) { return res.serverError(err); }
+      .exec(function (err, data) {
+        if (err) {
+          return res.serverError(err);
+        }
         res.json(data);
       })
   },
 
-  update: function(req, res){
+  update: function (req, res) {
     var params = req.allParams();
     var username = req.param('username');
     delete params.username;
-    User.update({username: username}, params).exec(function(err, data){
-      if (err) { return res.serverError(err); }
-       res.redirect('/user?username=' + username)
+    User.update({username: username}, params).exec(function (err, data) {
+      if (err) {
+        return res.serverError(err);
+      }
+      res.redirect('/user?username=' + username)
     })
   },
 
@@ -48,11 +52,13 @@ module.exports = {
       .populate('skills')
       .populate('services')
       .exec(function (err, data) {
-      res.json(data);
-    });
+        console.log(data.services);
+
+        res.json(data.toJSON());
+      });
   },
 
-  axios: function (req, res){
+  axios: function (req, res) {
     axios.get('https://devpoint-api.herokuapp.com/user?username=jarellano')
       .then(function (response) {
         console.log(response.data);
@@ -63,20 +69,25 @@ module.exports = {
       });
   },
 
-  findItems: function(req, res){
+  findItems: function (req, res) {
     var r = req.params;
-    User.findOne({username: r.username}).populate(r.item).exec(function(err, data){
-      if (err) { return res.serverError(err); }
+    User.findOne({username: r.username}).populate(r.item).exec(function (err, data) {
+      if (err) {
+        return res.serverError(err);
+      }
       return res.json(data[r.item]);
     })
   },
-  createItem: function(req, res){
+  createItem: function (req, res) {
     var r = req.params;
     var params = req.allParams();
     delete params.username;
     delete params.item;
-    User.findOne({username: r.username}).populate(r.item).exec(function(err, data){
-      if (err) { return res.serverError(err); }
+    User.findOne({username: r.username}).populate(r.item).exec(function (err, data) {
+      if (err) {
+        return res.serverError(err);
+      }
+
       data[r.item].add(params);
       data.save(function (err) {
         res.redirect('/user/' + data.id)
@@ -139,7 +150,6 @@ module.exports = {
   //     res.redirect('/user/byUserName?username=' + data.username)
   //   })
   // },
-
 
 
   /**

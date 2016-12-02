@@ -6,6 +6,7 @@
  */
 var model = 'services';
 
+
 module.exports = {
   create: function (req, res) {
     var r = req.body;
@@ -30,7 +31,7 @@ module.exports = {
   },
 
   findById: function (req, res) {
-    Service.findOne({id: req.params.id}).exec(function (err, data) {
+    sails.models['service'].findOne({id: req.params.id}).exec(function (err, data) {
       res.json(data);
     })
 
@@ -38,17 +39,30 @@ module.exports = {
 
   update: function (req, res) {
     var r = req.body;
-    Service.update({
-      id: req.params.id
-    }, {
-      name: r.name,
-      description: r.description,
-    })
+    var params = req.allParams();
+    var itemId = req.params.id;
+    delete params.id;
+    delete params.item;
+    console.log(params);
+    sails.models[req.param('item')].update({
+      id: itemId
+    }, params)
       .exec(function (err, data) {
-        res.redirect("/user/" + data.userId);
+        res.redirect("/user/" + data[0].userId);
         //res.json(data);
       })
   },
+
+  delete: function(req, res){
+    var r = req.body;
+    var itemId = req.params.id;
+
+    sails.models[req.param('item')].find({id: itemId}).exec(function(err, data){
+      sails.models[req.param('item')].destroy({id: itemId}).exec(function () {
+        res.redirect("/user/" + data[0].userId);
+      })
+    });
+  }
 
 
 };

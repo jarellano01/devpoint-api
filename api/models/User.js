@@ -53,8 +53,18 @@ module.exports = {
     skills: {
       collection: 'skill',
       via: 'userId'
+    },
+
+    fullName: function(){
+      return this.firstName + " " + this.lastName;
+    },
+    toJSON: function() {
+      var obj = this.toObject();
+      obj.fullName = this.fullName();
+      return obj;
     }
   },
+
   beforeCreate: function (user, cb) {
     bcrypt.genSalt(10, function (err, salt) {
       bcrypt.hash(user.password, salt, function (err, hash) {
