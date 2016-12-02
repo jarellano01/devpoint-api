@@ -13,6 +13,8 @@ module.exports = {
 
     description : { type: 'string', required: true },
 
+    icon : { type: 'string'},
+
     userId: {
       model: 'user'
     }
