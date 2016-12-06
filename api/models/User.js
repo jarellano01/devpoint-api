@@ -50,6 +50,10 @@ module.exports = {
       via: 'userId'
     },
 
+    projects: {
+      collection: 'project',
+      via: 'userId'
+    },
     skills: {
       collection: 'skill',
       via: 'userId'
