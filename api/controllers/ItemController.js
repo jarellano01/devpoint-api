@@ -58,8 +58,14 @@ module.exports = {
     var itemId = req.params.id;
 
     sails.models[req.param('item')].find({id: itemId}).exec(function(err, data){
-      sails.models[req.param('item')].destroy({id: itemId}).exec(function () {
-        res.redirect("/user/" + data[0].userId);
+      if (err) {
+        return res.serverError(err);
+      }
+      sails.models[req.param('item')].destroy({id: itemId}).exec(function (err) {
+        if (err) {
+          return res.serverError(err);
+        }
+        return res.redirect("/user/" + data[0].userId);
       })
     });
   }
