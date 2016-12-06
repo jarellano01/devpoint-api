@@ -51,10 +51,12 @@ module.exports = {
       .populate('messages')
       .populate('skills')
       .populate('services')
+      .populate('projects')
       .exec(function (err, data) {
-        console.log(data.services);
-
-        res.json(data.toJSON());
+        if (err) {
+          return res.serverError(err);
+        }
+        return res.json(data.toJSON());
       });
   },
 
