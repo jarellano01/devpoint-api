@@ -55,11 +55,9 @@ module.exports.routes = {
   // 'post /user/:username/skill' : 'SkillController.create',
   // 'post /user/:username/message' : 'MessageController.create',
 
-  'put /:item/:id': 'ItemController.update',
-  'delete /:item/:id': 'ItemController.delete',
-  'put /link/:id': 'LinkController.update',
-  'put /skill/:id': 'SkillController.update',
-  'put /message/:id': 'MessageController.update',
+  //item should be singular
+  'put /user/:username/:item/:id': 'ItemController.update',
+  'delete /user/:username/:item/:id': 'ItemController.delete'
 
   /***************************************************************************
   *                                                                          *

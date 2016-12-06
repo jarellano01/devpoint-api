@@ -65,7 +65,7 @@ module.exports = {
         if (err) {
           return res.serverError(err);
         }
-        return res.redirect("/user/" + data[0].userId);
+        return res.send('Item has been deleted');
       })
     });
   }
