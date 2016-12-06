@@ -9,7 +9,8 @@ module.exports = {
 
   attributes: {
 
-    name : { type: 'string', required: true },
+    name: {type: 'string', required: true},
+    icon: {type: 'string'},
 
     userId: {
       model: 'user'

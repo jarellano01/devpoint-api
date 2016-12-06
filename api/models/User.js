@@ -16,6 +16,8 @@ module.exports = {
 
     email: {type: 'string',required: true},
 
+    profileImage: {type: 'string'},
+
     password: {
       type: 'string',
       minLength: 6,
@@ -26,9 +28,6 @@ module.exports = {
       type: 'string',
       unique: true,
       required: true
-    },
-    profileImage: {
-      type: 'string'
     },
 
     headline: {type: 'string'},
