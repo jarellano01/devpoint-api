@@ -56,7 +56,7 @@ module.exports.routes = {
   // 'post /user/:username/message' : 'MessageController.create',
 
   'put /:item/:id': 'ItemController.update',
-  'get /:item/delete/:id': 'ItemController.delete',
+  'delete /:item/:id': 'ItemController.delete',
   'put /link/:id': 'LinkController.update',
   'put /skill/:id': 'SkillController.update',
   'put /message/:id': 'MessageController.update',
