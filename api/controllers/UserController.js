@@ -56,7 +56,8 @@ module.exports = {
         if (err) {
           return res.serverError(err);
         }
-        return res.json(data.toJSON());
+        if(!data) res.send('User does not exist');
+        return res.json(data);
       });
   },
 
