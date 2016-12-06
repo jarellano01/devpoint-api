@@ -163,7 +163,7 @@ module.exports = {
       username: req.param('username')
     }).exec(function (err, data) {
       if (err) {
-        return res.negotiate(err);
+        return res.serverError(err);
       }
       return res.json({"message": 'User has been deleted.'});
 
