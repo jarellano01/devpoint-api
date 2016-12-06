@@ -61,6 +61,7 @@ module.exports = {
       if (err) {
         return res.serverError(err);
       }
+
       sails.models[req.param('item')].destroy({id: itemId}).exec(function (err) {
         if (err) {
           return res.serverError(err);
