@@ -40,7 +40,7 @@ module.exports = {
       if (err) {
         return res.serverError(err);
       }
-      res.redirect('/user?username=' + username)
+      res.redirect('/user/' + username)
     })
   },
 
@@ -93,7 +93,7 @@ module.exports = {
 
       data[r.item].add(params);
       data.save(function (err) {
-        res.redirect('/user/' + data.id)
+        res.redirect('/user/' + data.username)
       });
     })
   },
