@@ -45,8 +45,7 @@ module.exports = {
           if(err) {
             return res.json(err);
           }
-
-          return res.json({request: "Create", item: data});
+          return res.json({request: "Create", item: data[r.item]});
         });
       })
     }

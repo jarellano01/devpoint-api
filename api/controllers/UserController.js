@@ -40,7 +40,7 @@ module.exports = {
       if (err) {
         return res.serverError(err);
       }
-      res.redirect('/user/' + username)
+      res.send(data);
     })
   },
 
