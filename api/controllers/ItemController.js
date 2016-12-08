@@ -13,7 +13,7 @@ module.exports = {
     var r = req.params;
     User.findOne({username: r.username}).populate(r.item).exec(function (err, data) {
       if (err) {
-        return res.serverError(err);
+        return res.json(err);
       }
       return res.json(data[r.item]);
     })
@@ -37,7 +37,7 @@ module.exports = {
     else{
       User.findOne({username: r.username}).populate(r.item).exec(function (err, data) {
         if (err) {
-          return res.serverError(err);
+          return res.json(err);
         }
 
         data[r.item].add(params);

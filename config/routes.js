@@ -52,7 +52,7 @@ module.exports.routes = {
   //item routes e.g. get all items: /user/jarellano/service
   'get /user/:username/:item' : 'ItemController.find',
   'post /user/:username/:item' : 'ItemController.createUpdate',
-  'delete /user/:username/:item': 'ItemController.delete'
+  'delete /user/:username/:item/:id': 'ItemController.delete'
 
   /***************************************************************************
   *                                                                          *
