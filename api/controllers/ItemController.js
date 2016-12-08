@@ -42,7 +42,7 @@ module.exports = {
 
         data[r.item].add(params);
         data.save(function (err) {
-          res.redirect('/user/' + data.username)
+          return res.json({request: "Create", item: data});
         });
       })
     }
