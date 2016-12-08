@@ -42,6 +42,7 @@ module.exports = {
 
         data[r.item].add(params);
         data.save(function (err) {
+          if(err) res.serverError(err);
           return res.json({request: "Create", item: data});
         });
       })
