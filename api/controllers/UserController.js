@@ -47,11 +47,11 @@ module.exports = {
   find: function (req, res) {
     var params = req.allParams();
     User.findOne(params)
-      .populate("links")
-      .populate('messages')
-      .populate('skills')
-      .populate('services')
-      .populate('projects')
+      .populate("link")
+      .populate('message')
+      .populate('skill')
+      .populate('service')
+      .populate('project')
       .exec(function (err, data) {
         if (err) {
           return res.serverError(err);
@@ -61,42 +61,7 @@ module.exports = {
       });
   },
 
-  axios: function (req, res) {
-    axios.get('https://devpoint-api.herokuapp.com/user?username=jarellano')
-      .then(function (response) {
-        console.log(response.data);
-        res.json(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  },
 
-  findItems: function (req, res) {
-    var r = req.params;
-    User.findOne({username: r.username}).populate(r.item).exec(function (err, data) {
-      if (err) {
-        return res.serverError(err);
-      }
-      return res.json(data[r.item]);
-    })
-  },
-  createItem: function (req, res) {
-    var r = req.params;
-    var params = req.allParams();
-    delete params.username;
-    delete params.item;
-    User.findOne({username: r.username}).populate(r.item).exec(function (err, data) {
-      if (err) {
-        return res.serverError(err);
-      }
-
-      data[r.item].add(params);
-      data.save(function (err) {
-        res.redirect('/user/' + data.username)
-      });
-    })
-  },
 
   deleteAll: function (req, res) {
     User.destroy({}).exec(function (err, data) {

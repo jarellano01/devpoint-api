@@ -35,29 +35,24 @@ module.exports.routes = {
   // '/': {
   //   view: 'homepage'
   // }
+  //get all users
   'get /user/all' : 'UserController.all',
+
+  //find one user either using specified parameters or just username
   'get /user': 'UserController.find',
+  'get /user/:username': 'UserController.find',
+
+  //update one user either using specified parameters or just username
   'put /user' : 'UserController.update',
   'put /user/:username' : 'UserController.update',
 
-  'get /user/:username': 'UserController.find',
-
+  //create new user
   'post /user/register' : 'UserController.register',
 
-  'get /user/:username/:item' : 'UserController.findItems',
-
-  'post /user/:username/:item' : 'UserController.createItem',
-
-  'get /axios': 'UserController.axios',
-
-  // 'post /user/:username/service' : 'ServiceController.create',
-  // 'post /user/:username/link' : 'LinkController.create',
-  // 'post /user/:username/skill' : 'SkillController.create',
-  // 'post /user/:username/message' : 'MessageController.create',
-
-  //item should be singular
-  'put /user/:username/:item/:id': 'ItemController.update',
-  'delete /user/:username/:item/:id': 'ItemController.delete'
+  //item routes e.g. get all items: /user/jarellano/service
+  'get /user/:username/:item' : 'ItemController.find',
+  'post /user/:username/:item' : 'ItemController.createUpdate',
+  'delete /user/:username/:item': 'ItemController.delete'
 
   /***************************************************************************
   *                                                                          *

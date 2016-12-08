@@ -16,14 +16,14 @@ https://devpoint-api.herokuapp.com/
 
 **Get User By Username** `/user?username={username}`
 
-**Get User Items** `/user/{username}/{item-name plural}` --> `/user/jarellano/services`
+**Get User Items** `/user/{username}/{item-name singular}` --> `/user/jarellano/service`
 
 * Available Items
-  * services
-  * links
-  * projects
-  * skills
-  * messages
+  * service
+  * link
+  * project
+  * skill
+  * message
 
 ### Creating Updating and Deleting
 All Creating, Updating and Deleted should be done through an html form or through an ajax request with content type set to `application/x-www-form-urlencoded; charset=UTF-8`. In PostMan be sure to toggle "x-www-form-urlencoded" under the Body Tab.
@@ -37,10 +37,9 @@ All Creating, Updating and Deleted should be done through an html form or throug
   * lastName
   * password
 
-**Update User** `Put /user/`
+**Update User** `Put /user/{username}`
 
 * Form Fields
-  * username (required)
   * email
   * firstName
   * lastName

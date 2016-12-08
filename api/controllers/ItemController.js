@@ -8,59 +8,54 @@ var model = 'services';
 
 
 module.exports = {
-  create: function (req, res) {
-    var r = req.body;
-    User.findOne({username: req.params.username}).exec(function (err, user) {
-      Service.create({
-        name: r.name,
-        description: r.description,
-        userId: user.id
-      }).exec(function (err, data) {
-        return res.redirect("/user/" + data.username)
-      })
-    })
-  },
+
   find: function (req, res) {
-    User.findOne({
-      username: req.params.username
+    var r = req.params;
+    User.findOne({username: r.username}).populate(r.item).exec(function (err, data) {
+      if (err) {
+        return res.serverError(err);
+      }
+      return res.json(data[r.item]);
     })
-      .populate(model)
-      .exec(function (err, user) {
-        res.json(user[model]);
-      })
   },
-
-  findById: function (req, res) {
-    sails.models['service'].findOne({id: req.params.id}).exec(function (err, data) {
-      res.json(data);
-    })
-
-  },
-
-  update: function (req, res) {
-    var r = req.body;
+  createUpdate: function (req, res) {
+    var r = req.params;
     var params = req.allParams();
-    var itemId = req.params.id;
-    delete params.id;
+    delete params.username;
     delete params.item;
-    console.log(params);
-    sails.models[req.param('item')].update({
-      id: itemId
-    }, params)
-      .exec(function (err, data) {
-        res.redirect("/user/" + data[0].userId);
-        //res.json(data);
-      })
-  },
+    var itemId = req.param('id');
 
+    if(itemId){
+      sails.models[req.param('item')].update({
+        id: itemId
+      }, params)
+        .exec(function (err, data) {
+          return res.redirect("/user?id=" + data[0].userId);
+          //res.json(data);
+        })
+    }
+    else{
+      User.findOne({username: r.username}).populate(r.item).exec(function (err, data) {
+        if (err) {
+          return res.serverError(err);
+        }
+
+        data[r.item].add(params);
+        data.save(function (err) {
+          res.redirect('/user/' + data.username)
+        });
+      })
+    }
+  },
   delete: function(req, res){
     var r = req.body;
-    var itemId = req.params.id;
+    var itemId = req.param('id');
 
     sails.models[req.param('item')].find({id: itemId}).exec(function(err, data){
       if (err) {
         return res.serverError(err);
       }
+      if(!data) res.send("Item was not found");
 
       sails.models[req.param('item')].destroy({id: itemId}).exec(function (err) {
         if (err) {

@@ -34,26 +34,26 @@ module.exports = {
 
     description: {type: 'string'},
 
-    messages: {
+    message: {
       collection: 'message',
       via: 'userId'
     },
 
-    links: {
+    link: {
       collection: 'link',
       via: 'userId'
     },
 
-    services: {
+    service: {
       collection: 'service',
       via: 'userId'
     },
 
-    projects: {
+    project: {
       collection: 'project',
       via: 'userId'
     },
-    skills: {
+    skill: {
       collection: 'skill',
       via: 'userId'
     },
