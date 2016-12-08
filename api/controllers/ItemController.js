@@ -30,7 +30,7 @@ module.exports = {
         id: itemId
       }, params)
         .exec(function (err, data) {
-          return res.redirect("/user?id=" + data[0].userId);
+          return res.json({request: "Update", item: data});
           //res.json(data);
         })
     }
