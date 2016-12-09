@@ -12,6 +12,7 @@ module.exports = {
     name : { type: 'string' },
 
     link : { type: 'string' },
+    icon : { type: 'string'},
 
     userId: {
       model: 'user'

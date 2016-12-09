@@ -90,39 +90,6 @@ module.exports = {
       })
   },
 
-
-  /**
-   * `UsersController.create()`
-   */
-  // create: function (req, res) {
-  //   var b = req.body;
-  //
-  //   User.create({
-  //     firstName: b.firstName,
-  //
-  //     lastName: b.lastName,
-  //
-  //     email: b.email,
-  //
-  //     password: b.password,
-  //
-  //     username: b.username,
-  //
-  //     headline: b.headline,
-  //
-  //     description: b.description
-  //   }).exec(function (err, data) {
-  //     if (err) {
-  //       return res.serverError(err);
-  //     }
-  //     res.redirect('/user/byUserName?username=' + data.username)
-  //   })
-  // },
-
-
-  /**
-   * `UsersController.delete()`
-   */
   delete: function (req, res) {
     User.destroy({
       username: req.param('username')
@@ -133,6 +100,14 @@ module.exports = {
       return res.json({"message": 'User has been deleted.'});
 
     })
+  },
+
+  uploadImage: function(req, res){
+    var dataPhoto = req.param("dataPhoto");
+    Cloudinary.upload(dataPhoto ,function (result) {
+      res.send(result);
+    });
   }
+
 };
 

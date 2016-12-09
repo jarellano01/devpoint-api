@@ -38,6 +38,8 @@ module.exports.routes = {
   //get all users
   'get /user/all' : 'UserController.all',
 
+  'post /user/:username/image' : 'UserController.uploadImage',
+
   //find one user either using specified parameters or just username
   'get /user': 'UserController.find',
   'get /user/:username': 'UserController.find',
@@ -52,7 +54,9 @@ module.exports.routes = {
   //item routes e.g. get all items: /user/jarellano/service
   'get /user/:username/:item' : 'ItemController.find',
   'post /user/:username/:item' : 'ItemController.createUpdate',
-  'delete /user/:username/:item/:id': 'ItemController.delete'
+  'delete /user/:username/:item/:id': 'ItemController.delete',
+
+
 
   /***************************************************************************
   *                                                                          *
