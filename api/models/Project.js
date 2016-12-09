@@ -21,6 +21,8 @@ module.exports = {
 
     image: { type: 'string'},
 
+    category: {type: 'string'},
+
     userId: {
       model: 'user'
     }
