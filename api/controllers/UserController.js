@@ -98,7 +98,6 @@ module.exports = {
         return res.serverError(err);
       }
       return res.json({"message": 'User has been deleted.'});
-
     })
   },
 

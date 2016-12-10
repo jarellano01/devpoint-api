@@ -14,9 +14,12 @@ module.exports = {
 
     lastName: {type: 'string', required: true},
 
+    cityLocation: {type: 'string'},
+
     email: {type: 'string',required: true},
 
     profileImage: {type: 'string'},
+    template: {type: 'string', defaultsTo : "Template1"},
 
     password: {
       type: 'string',
