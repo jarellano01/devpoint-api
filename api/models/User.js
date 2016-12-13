@@ -8,8 +8,7 @@ var User = {
     passports : { collection: 'Passport', via: 'user' },
 
     profile: {
-      collection:'profile',
-      via: 'userId'
+      model: "profile"
     },
     message: {
       collection: 'message',

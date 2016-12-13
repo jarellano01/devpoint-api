@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-    userId:{
+    user:{
       model: 'user'
     },
     firstName: {type: 'string'},
