@@ -8,8 +8,9 @@
 module.exports = {
 
   attributes: {
-    user:{
-      model: 'user'
+    userId:{
+      model: 'user',
+      unique: true
     },
     firstName: {type: 'string'},
 
