@@ -1,42 +1,16 @@
-/**
- * User.js
- *
- * @description :: TODO: You might write a short summary of how this model works and what it represents here.
- * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
- */
-var bcrypt = require('bcrypt');
-
-module.exports = {
+var User = {
+  // Enforce model schema in the case of schemaless databases
+  schema: true,
 
   attributes: {
+    username  : { type: 'string', unique: true , required: true},
+    email     : { type: 'email',  unique: true, required: true },
+    passports : { collection: 'Passport', via: 'user' },
 
-    firstName: {type: 'string', required: true},
-
-    lastName: {type: 'string', required: true},
-
-    cityLocation: {type: 'string'},
-
-    email: {type: 'string',required: true},
-
-    profileImage: {type: 'string'},
-    template: {type: 'string', defaultsTo : "Template1"},
-
-    password: {
-      type: 'string',
-      minLength: 6,
-      required: true
+    profile: {
+      collection:'profile',
+      via: 'userId'
     },
-
-    username: {
-      type: 'string',
-      unique: true,
-      required: true
-    },
-
-    headline: {type: 'string'},
-
-    description: {type: 'string'},
-
     message: {
       collection: 'message',
       via: 'userId'
@@ -59,30 +33,8 @@ module.exports = {
     skill: {
       collection: 'skill',
       via: 'userId'
-    },
-
-    fullName: function(){
-      return this.firstName + " " + this.lastName;
-    },
-    toJSON: function() {
-      var obj = this.toObject();
-      obj.fullName = this.fullName();
-      return obj;
     }
-  },
-
-  beforeCreate: function (user, cb) {
-    bcrypt.genSalt(10, function (err, salt) {
-      bcrypt.hash(user.password, salt, function (err, hash) {
-        if (err) {
-          console.log(err);
-          cb(err);
-        } else {
-          user.password = hash;
-          cb();
-        }
-      });
-    });
   }
 };
 
+module.exports = User;

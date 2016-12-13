@@ -35,21 +35,26 @@ module.exports.routes = {
   // '/': {
   //   view: 'homepage'
   // }
-  //get all users
-  'get /user/all' : 'UserController.all',
 
-  'post /user/:username/image' : 'UserController.uploadImage',
+  'get /login': 'AuthController.login',
+  'get /logout': 'AuthController.logout',
+  'get /register': 'AuthController.register',
+  'post /auth/local': 'AuthController.callback',
+  'post /auth/local/:action': 'AuthController.callback',
+
+  //get all users
+  'get /user/all' : 'ProfileController.all',
+
+  'post /user/:username/image' : 'ProfileController.uploadImage',
 
   //find one user either using specified parameters or just username
-  'get /user': 'UserController.find',
-  'get /user/:username': 'UserController.find',
+  'get /user': 'ProfileController.find',
+  'get /user/:username': 'ProfileController.find',
 
   //update one user either using specified parameters or just username
-  'put /user' : 'UserController.update',
-  'put /user/:username' : 'UserController.update',
+  'put /user' : 'ProfileController.update',
+  'put /user/:username' : 'ProfileController.update',
 
-  //create new user
-  'post /user/register' : 'UserController.register',
 
   //item routes e.g. get all items: /user/jarellano/service
   'get /user/:username/:item' : 'ItemController.find',
