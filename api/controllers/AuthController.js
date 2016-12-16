@@ -165,7 +165,7 @@ var AuthController = {
 
         // Upon successful login, send the user to the homepage were req.user
         // will be available.
-        res.json({authenticated : true})
+        res.json({authenticated : true, token: jwToken.issue({id: user.id})})
       });
     });
   },
