@@ -24,6 +24,7 @@
     "grunt-sync": "0.5.2",
     "handlebars": "^4.0.6",
     "include-all": "^1.0.0",
+    "jsonwebtoken": "^7.2.1",
     "node-localdb": "0.0.3",
     "nodemailer": "^2.6.4",
     "passport": "^0.3.2",
