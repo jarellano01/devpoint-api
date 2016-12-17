@@ -27,13 +27,13 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*' : ['passport', 'sessionAuth'],
-  '*' : ['isAuthorized'],
-  'ProfileController' : {
-    'find' : true,
-  },
-  'ItemController' : {
-    'find' : true
-  },
+  // '*' : ['isAuthorized'],
+  // 'ProfileController' : {
+  //   'find' : true,
+  // },
+  // 'ItemController' : {
+  //   'find' : true
+  // },
   'auth': {
     '*' : ['passport']
   },
